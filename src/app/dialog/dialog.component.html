@@ -1,0 +1,35 @@
+<div mat-dialog-title>
+    <h1>API Form</h1>
+</div>
+<form [formGroup]="apiForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Path</mat-label>
+                <input matInput type="text" formControlName="path">
+            </mat-form-field>
+           
+        </div>
+       <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>HttpMethod</mat-label>
+                <mat-select formControlName="httpMethod">
+                    <mat-option *ngFor="let val of method" [value]="val">{{val}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+           
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Schema</mat-label>
+                <textarea matInput rows="5" formControlName="schema" ></textarea>
+            </mat-form-field>
+            
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>
